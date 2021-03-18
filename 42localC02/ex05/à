@@ -1,0 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmondell <mmondell@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/17 15:31:30 by mmondell          #+#    #+#             */
+/*   Updated: 2021/03/17 15:39:16 by mmondell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_str_is_printable(char *str)
+{
+		int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] < 32 || str[i] > 127)
+			return (0);
+		i++;
+	}
+	printf("All characters are printable!");
+	return (1);
+}
+
+int main(void);
+{
+	char print[]
+}
