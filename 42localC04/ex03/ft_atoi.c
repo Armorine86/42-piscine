@@ -19,12 +19,17 @@ int	ft_atoi(char *str)
 	num = 0;
 	min = 1;
 	i = 0;
-	while ((str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z'))
-	{
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i++;
+	while (str[i] == '-' || str[i] == '+')
+	{	
 		if (str[i] == '-')
 			min *= -1;
-		if (str[i] >= '1' && str[i] <= '9')
-			num = (str[i] - '0') + (num * 10);
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = (str[i] - '0') + (num * 10);
 		i++;
 	}
 	return (num * min);

@@ -6,22 +6,27 @@
 /*   By: mmondell <mmondell@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 11:18:02 by mmondell          #+#    #+#             */
-/*   Updated: 2021/03/18 11:45:17 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/03/18 16:01:56 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcat(char *dest, char *src)
 {
-	if (*dest == 0 || *src == 0)
-		return (0);
-	while (*dest != '\0')
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
 	{
-		dest++;
+		i++;
 	}
-	while (*src != '\0')
+	while (src[j] != '\0')
 	{
-		*dest++ = *src++;
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	*dest = '\0';
+	dest[i] = '\0';
 	return (dest);
 }

@@ -21,7 +21,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 		{
 			return (-1);
 		}
-		if (s1[i] > s2[i])
+		else if (s1[i] > s2[i])
 		{
 			return (1);
 		}

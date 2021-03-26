@@ -10,52 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-char    *ft_compare(char *str, char *to_find, char *hayptr, char *nptr);
-
-char    *ft_strstr(char *str, char *to_find)
+char	*ft_strstr(char *str, char *to_find)
 {
-    char    *hayptr;
-    char    *nptr;
+	char	*hay;
+	char	*need;
 
-    hayptr = str;
-    nptr = to_find;
-    while (*hayptr != *nptr)
-    {
-        hayptr++;
-    }
-    return ft_compare(str, to_find, hayptr, nptr);
-        
-}
-
-char    *ft_compare(char *str, char *to_find, char *hayptr, char *nptr)
-{
-    while (*hayptr == *nptr)
-        {
-            hayptr++;
-            nptr++;
-        }
-        nptr = to_find;
-        while (*hayptr != *nptr)
-        {    
-            nptr++;
-        }
-        if (*nptr == '\0')
-            return (to_find);
-        else
-            return (str);
-        ft_compare(str, to_find, hayptr, nptr);
-        
-}
-
-
-
-int main(void)
-{
-    char hay[] = "I love mamamo N' Roll!";
-    char needle[] = "mamo";
-    ft_strstr(hay, needle);
-    return 0;
+	if (*to_find == '\0')
+		return (str);
+	while (*str != '\0')
+	{
+		hay = str;
+		need = to_find;
+		while (*need && *hay == *need)
+		{
+			++hay;
+			++need;
+		}
+		if (*need == 0)
+			return (to_find);
+		++str;
+	}
+	return (0);
 }

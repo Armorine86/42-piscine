@@ -1,23 +1,25 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmondell <mmondell@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/24 09:00:23 by mmondell          #+#    #+#             */
+/*   Updated: 2021/03/25 09:45:56 by mmondell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int recursive_power(int num, int power, int r)
+int	ft_recursive_power(int nb, int power)
 {
-    if (power-- > 0)
-        return(recursive_power(num, power, r *= num));
-    return (r);
-}
+	int	i;
 
-int ft_recursive_power(int nb, int power)
-{
-    if (power < 0)
-        return (0);
-    return (recursive_power(nb, power, 1));
-}
-
-int	main(void)
-{
-	printf("10^2 = %d\n", ft_recursive_power(10, 2));
-	printf("10^0 = %d\n", ft_recursive_power(10, 0));
-	printf("10^-1 = %d\n", ft_recursive_power(10, -1));
-	printf("10^5 = %d\n", ft_recursive_power(10, 5));
+	i = 1;
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	while (power > 0)
+		return (nb * ft_recursive_power(nb, power - 1));
+	return (nb);
 }

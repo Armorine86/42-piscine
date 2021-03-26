@@ -1,23 +1,20 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmondell <mmondell@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/24 09:02:36 by mmondell          #+#    #+#             */
+/*   Updated: 2021/03/24 09:03:45 by mmondell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_fibonacci(int index)
+int	ft_fibonacci(int index)
 {
-    
-    if (index < 0)
-        return (-1);
-    if (index < 2)
-        return (index);
-    return ft_fibonacci(index - 1) + ft_fibonacci(index - 2);
-}
-
-int	main(void)
-{
-	int	index;
-
-	index = -2;
-	while (index < 30)
-	{
-		printf("fibonacci(%d) = %d\n", index, ft_fibonacci(index));
-		index++;
-	}
+	if (index < 0)
+		return (-1);
+	if (index < 2)
+		return (index);
+	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 }

@@ -1,7 +1,16 @@
-#include <stdio.h>
-#include <limits.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmondell <mmondell@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/24 09:04:06 by mmondell          #+#    #+#             */
+/*   Updated: 2021/03/24 09:04:55 by mmondell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int		ft_sqrt(int nb)
+int	ft_sqrt(int nb)
 {
 	int	i;
 
@@ -18,20 +27,4 @@ int		ft_sqrt(int nb)
 		}
 	}
 	return (0);
-}
-
-int	main(void)
-{
-	int number;
-
-	number = -2;
-	while (number < 26)
-	{
-		printf("sqrt(%d) = %d\n", number, ft_sqrt(number));
-		number++;
-	}
-	printf("sqrt(%d) = %d\n", 1000000, ft_sqrt(1000000));
-	printf("sqrt(%d) = %d\n", INT_MAX, ft_sqrt(INT_MAX));
-	printf("sqrt(%d) = %d\n", INT_MIN, ft_sqrt(INT_MIN));
-	printf("sqrt(%d) = %d\n", 2147395600, ft_sqrt(2147395600));
 }

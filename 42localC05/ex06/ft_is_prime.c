@@ -1,6 +1,14 @@
-#include <stdio.h>
-#include <limits.h>
-#include <math.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmondell <mmondell@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/24 09:06:16 by mmondell          #+#    #+#             */
+/*   Updated: 2021/03/24 09:06:56 by mmondell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	ft_is_prime(int nb)
 {
@@ -17,25 +25,5 @@ int	ft_is_prime(int nb)
 	{
 		return (1);
 	}
-	return (0);
-}
-
-int	main(void)
-{
-	int	number;
-	int	result;
-	int	count;
-
-	number = 0;
-	count = 0;
-	while (number <= 100)
-	{
-		result = ft_is_prime(number);
-		printf("is_prime(%d) = %d\n", number, result);
-		number++;
-		if (result)
-			count++;
-	}
-	printf("first 50'000 number, %d prime\n", count);
 	return (0);
 }
