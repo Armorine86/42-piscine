@@ -1,36 +1,24 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: abordack <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/02/25 17:38:19 by abordack          #+#    #+#              #
-#    Updated: 2020/02/25 17:38:21 by abordack         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-SRCS	= ${wildcard ./srcs/*.c}
+SRCS	= ${wildcard srcs/*.c}
 OBJS	= ${SRCS:.c=.o}
+CC		= gcc
+CFLAGS	= -Wextra -Wall -Werror
 INCL	= include
-CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
-NAME	= BSQ
+NAME	= bsq
 
 .c.o :	
-			${CC} -I ${INCL} ${CFLAGS} -c $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCL}
 
-all :		${OBJS}
-			${CC} -o ${NAME} ${OBJS}
+${NAME} :	${OBJS}
+			${CC} ${OBJS} -o ${NAME} 
 
-${NAME} :	all
+all : 	${NAME}
 
-clean :
+clean : 
 			rm -f ${OBJS}
 
-fclean :	clean
+fclean : 	clean
 			rm -f ${NAME}
 
-re :		fclean all
-	
-.PHONY :	all ${NAME} clean fclean re
+re : 		fclean all
+
+.PHONY : 	all clean fclean re

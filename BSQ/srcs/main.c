@@ -3,83 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgilles <rgilles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 14:49:00 by rgilles           #+#    #+#             */
-/*   Updated: 2020/02/24 14:49:03 by rgilles          ###   ########.fr       */
+/*   Created: 2021/03/29 09:07:22 by mmondell          #+#    #+#             */
+/*   Updated: 2021/03/31 18:01:50 by laube            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_header.h>
+#include "ft_bsq.h"
 
-void	process_file(t_gridinfo mygrid, char *filename)
+int main(int argc, char **argv)
 {
-	char	*charptr;
+    int 		i;
+	t_mapinfo	info;
+	char		**map;
+	//char		*input;
 
-	if (!(mygrid.map = check_map(get_lines_from_grid(filename), mygrid.height)))
+	if (argc == 1)
 	{
-		error("map error\n");
-		return ;
+	//	input = read_it();
+	//	map = mapgen(input);
 	}
-	charptr = mygrid.map[0];
-	while (*charptr)
-		charptr++;
-	mygrid.sqrchr = *(charptr - 1);
-	mygrid.empty = *(charptr - 3);
-	do_square(mygrid);
+    i = 1;
+    while (i < argc)
+    {
+        map = mapgen(argv[i]);
+		info = create_prop(map);
+		solve_it(&info);
+        i++;
+		print_matrix(info.map);
+    }
+    return (0);
 }
 
-void	calculate_dims(int file, char *filename)
+t_mapinfo	create_prop(char **table)
 {
-	t_gridinfo	mygrid;
-	char		c;
-	char		temp;
-	char		prev_c;
+	t_mapinfo	info;
+	int			i;
+	int			first_len;
 
-	c = 0;
-	prev_c = 0;
-	while (c != '\n' && read(file, &c, 1))
-		;
-	mygrid.width = 0;
-	mygrid.height = 1;
-	while (read(file, &c, 1))
-	{
-		if (mygrid.height == 1 && c != '\n')
-			mygrid.width++;
-		if (c == '\n')
-			mygrid.height++;
-		prev_c = temp;
-		temp = c;
-	}
-	close(file);
-	(c == '\n' && prev_c != '\n' && prev_c != '\0') ?
-	process_file(mygrid, filename)
-	: error("map error\n");
-}
-
-void	parse_file(char *filename)
-{
-	int			file;
-
-	if ((file = open(filename, O_RDONLY)) < 0)
-		error("map error\n");
-	else
-		calculate_dims(file, filename);
-}
-
-int		main(int ac, char **av)
-{
-	int i;
-
-	i = 1;
-	if (ac == 1)
-		parse_file(ft_file_missing());
-	while (i < ac)
-	{
-		parse_file(av[i]);
-		if (i < ac - 1)
-			ft_putchar('\n');
+	first_len = ft_strlen_char(table[0], '\n');
+	info.obstacle = table[0][first_len - 2];
+	info.empty = table[0][first_len - 3];
+	info.full = table[0][first_len - 1];
+	info.map = &table[1];
+	i = 0;
+	while (info.map[i])
 		i++;
-	}
-	return (0);
+	info.height = i;
+	i = 0;
+	while (info.map[0][i])
+		i++;
+	info.width = i;
+	info.x_pos = 0;
+	info.y_pos = 0;
+	return (info);
 }
+/*
+char	*read_it(void)
+{
+	char	c;
+	int		counter;
+	char	*str;
+
+	counter = 0;
+	while (read(0, &c, 1))
+	{
+		counter++;
+	}
+	return (str);
+}
+*/
